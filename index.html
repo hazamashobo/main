@@ -63,43 +63,64 @@
     padding: 0 1em;
   }
 
-  /* カルーセル */
- .carousel-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  margin: 2em 0;
-  display: flex;
-  align-items: center; 
-}
-  #carouselImages {
-    display: flex;
-    transition: transform 0.5s ease;
-  }
-  #carouselImages img {
-    width: 400px;
-    margin: 0 10px;
-    flex-shrink: 0;
-    border-radius: 10px;
-  }
-.prev, .next {
-  position: relative; 
-  background: #32a9cd;
-  border: none;
-  color: #fff;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 24px;
-  line-height: 40px;
-  text-align: center;
-  cursor: pointer;
-  margin: 0 10px; 
-  flex-shrink: 0;
-}
-  .prev { left: 0; }
-  .next { right: 0; }
-
+ /* カルーセル */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 500px;
+      margin: 2em auto;
+      border-radius: 8px;
+    }
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel img {
+      width: 100%;
+      flex-shrink: 0;
+    }
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .carousel-buttons button {
+      background-color: rgba(0,0,0,0.5);
+      border: none;
+      color: #fff;
+      padding: 0.5em 1em;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+/* PICK項目 */
+    .pick {
+      margin: 2em 0;
+    }
+    .pick h2 {
+      color: #003366;
+    }
+    .pick-items {
+      display: flex;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+    .pick-item img {
+      width: 200px;
+      border-radius: 4px;
+    }
+/* 最新刊 & トピックス */
+    .latest {
+      margin: 2em 0;
+    }
+    .latest h2, .topics h2 {
+      color: #003366;
+    }
+    .topics {
+      margin-top: 1em;
+    }
   footer {
     background-color: #32a9cd;
     color: #fff;
@@ -113,7 +134,7 @@
 <body>
 <header>
   <div class="title-wrapper">
-    <h1>狭間書房8</h1>
+    <h1>狭間書房9</h1>
     <p class="subtitle">- Hazama Publishing -</p>
   </div>
   <div class="search">
@@ -128,22 +149,47 @@
   <a href="#">お問い合わせ</a>
 </nav>
 
-<div class="content">
-  <div class="carousel-container">
-    <button class="prev" onclick="prevSlide()">‹</button>
-    <div id="carouselImages">
-      <img src="gazou/bana1.png" alt="bana1">
-      <img src="gazou/bana2.png" alt="bana2">
-      <img src="gazou/bana3.png" alt="bana3">
-      <img src="gazou/bana4.png" alt="bana4">
+<!-- カルーセル -->
+<div class="carousel">
+      <div class="carousel-images" id="carouselImages">
+        <img src="gazou/bana1.png" alt="画像1">
+        <img src="gazou/bana2.png" alt="画像2">
+        <img src="gazou/bana3.png" alt="画像3">
+        <img src="gazou/bana4.png" alt="画像4">
+      </div>
+      <div class="carousel-buttons">
+        <button onclick="prevSlide()">‹</button>
+        <button onclick="nextSlide()">›</button>
+      </div>
     </div>
-    <button class="next" onclick="nextSlide()">›</button>
-  </div>
-</div>
 
-<footer>
-  <p>© 2025 狭間書房</p>
-</footer>
+<!-- PICK UP! -->
+<div class="pick">
+      <h2>PICK UP!</h2>
+      <div class="pick-items">
+        <div class="pick-item"><img src="gazou/clear_silver.jpg" alt="Pick1"></div>
+        <div class="pick-item"><img src="pick2.jpg" alt="Pick2"></div>
+        <div class="pick-item"><img src="pick3.jpg" alt="Pick3"></div>
+      </div>
+    </div>
+
+<!-- 最新刊 -->
+<div class="latest">
+      <h2>最新刊</h2>
+      <p>ここに最新刊の説明や表紙を入れます。</p>
+
+<!-- トピックス -->
+<div class="topics">
+        <h2>トピックス</h2>
+        <p>ここに最新情報やイベント情報を掲載します。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2025 狭間書房</p>
+  </footer>
 
 <div id="searchResults"></div>
 
@@ -160,32 +206,25 @@
     if(found) location.href = found.url;
   }
 
-  // カルーセル
- const slides = document.getElementById('carouselImages').children;
-const container = document.getElementById('carouselImages');
-const total = slides.length;
-let currentSlide = 0;
+    // カルーセル
+    let currentSlide = 0;
+    const slides = document.getElementById('carouselImages').children;
 
-function showSlide(index) {
-  currentSlide = (index + total) % total;
-  const slideWidth = slides[0].offsetWidth;
-  const gap = 20;
-  const containerWidth = container.parentElement.offsetWidth;
-  currentSlide = index;
+    function showSlide(index) {
+      const total = slides.length;
+      if (index < 0) currentSlide = total - 1;
+      else if (index >= total) currentSlide = 0;
+      else currentSlide = index;
+      const offset = -currentSlide * 100;
+      document.getElementById('carouselImages').style.transform = `translateX(${offset}%)`;
+    }
 
-  // 右端まで来た場合のループ
-  if (currentSlide >= total) {
-    currentSlide = 0;
-  }
-  const offset = -currentSlide*(slideWidth+gap) + (containerWidth - slideWidth)/2;
-  container.style.transform = `translateX(${offset}px)`;
-}
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
 
-function nextSlide(){ showSlide(currentSlide+1); }
-function prevSlide(){ showSlide(currentSlide-1); }
+    // 自動スライド（任意）
+    setInterval(() => { showSlide(currentSlide + 1); }, 5000);
 
-setInterval(nextSlide, 5000);
-window.onload = ()=>showSlide(currentSlide);
 </script>
 </body>
 </html>
