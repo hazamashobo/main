@@ -1,69 +1,123 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>狭間書房 | Hazama Publishing</title>
-<style>
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: "ヒラギノ角ゴシック", serif;
-    background: #fff;
-    color: #32a9cd;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em 2em;
-    background-color: #32a9cd;
-    color: #fff;
-  }
-  .title-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-  header h1 { margin: 0; font-size: 3em; letter-spacing: 0.2em; line-height: 1; }
-  .subtitle { margin: 0; padding: 0; line-height: 1; font-size: 1em; }
-
-  .search input {
-    padding: 4px; border: 2px solid #003366; border-radius: 4px;
-    width: 150px; background-color: #fff; color: #003366;
-  }
-  .search input::placeholder { color: #003366aa; }
-  .search button {
-    padding: 4px 6px; margin-left: 4px; border-radius: 4px; border: none;
-    background-color: #003366; color: #fff; cursor: pointer;
-  }
-  .search button:hover { background-color: #001f33; }
-
-  nav {
-    text-align: center;
-    padding: 1em 0;
-    background-color: #f0f0f0;
-  }
-  nav a {
-    color: #003366;
-    margin: 0 1em;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  nav a:hover { color: #32a9cd; }
-
-  .content {
-    flex: 1;
-    max-width: 1000px;
-    margin: 2em auto;
-    padding: 0 1em;
-  }
-
- /* カルーセル */
+  <meta charset="UTF-8">
+  <title>狭間書房 | Hazama Publishing</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #32a9cd;
+      font-family: "ヒラギノ角ゴシック", serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+    }
+/* ヘッダー */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      background-color: #32a9cd;
+      color: #fff;
+    }
+    .title-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      border: none;
+    }
+    .subtitle {
+      margin: 9;
+      padding: 0;
+      line-height: 1;
+      font-size: 1em;
+      margin-left: 100px
+      color: #fff;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+    }
+    .search input {
+      padding: 4px;
+      border: 2px solid #003366;
+      border-radius: 4px;
+      width: 150px;
+      background-color: #fff;
+      color: #003366;
+    }
+    .search input::placeholder {
+      color: #003366aa;
+    }
+    .search button {
+      padding: 4px 6px;
+      margin-left: 4px;
+      border-radius: 4px;
+      border: none;
+      background-color: #003366;
+      color: #fff;
+      cursor: pointer;
+    }
+    .search button:hover {
+      background-color: #001f33;
+    }
+/* 検索 */
+    .search {
+      display: flex;
+      align-items: center;
+    }
+    .search input {
+      padding: 4px;
+      border: 2px solid #003366;
+      border-radius: 4px;
+      width: 150px;
+      background-color: #ffffff;
+      color: #003366;
+    }
+    .search input::placeholder {
+      color: #003366aa;
+    }
+    .search button {
+      padding: 4px 6px;
+      margin-left: 4px;
+      border-radius: 4px;
+      border: none;
+      background-color: #003366;
+      color: #fff;
+      cursor: pointer;
+    }
+    .search button:hover {
+      background-color: #001f33;
+    }
+/* ナビゲーション */
+    nav {
+      text-align: center;
+      padding: 1em 0;
+      background-color: #f0f0f0;
+    }
+    nav a {
+      color: #003366;
+      margin: 0 1em;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #32a9cd;
+    }
+/* コンテンツ */
+    .content {
+      max-width: 1000px;
+      margin: 2em auto;
+      padding: 0 1em;
+    }
+/* カルーセル */
     .carousel {
       position: relative;
       overflow: hidden;
@@ -121,33 +175,32 @@
     .topics {
       margin-top: 1em;
     }
-  footer {
-    background-color: #32a9cd;
-    color: #fff;
-    text-align: center;
-    padding: 1em;
-    margin-top: auto;
-  }
-</style>
-  
+/* フッター */
+    footer {
+      background-color: #32a9cd;
+      color: #ffffffff;
+      text-align: center;
+      padding: 1em;
+    }
+
+  </style>
 </head>
 <body>
-<header>
-  <div class="title-wrapper">
-    <h1>狭間書房9</h1>
-    <p class="subtitle">- Hazama Publishing -</p>
-  </div>
-  <div class="search">
-    <input type="text" id="searchInput" placeholder="キーワード入力">
-    <button onclick="searchSite()">検索</button>
-  </div>
-</header>
+  <header>
+    <h1>狭間書房10</h1>
+    <div class="search">
+      <input type="text" id="searchInput" placeholder="キーワード入力">
+      <button onclick="searchSite()">検索</button>
+    </div>
+  </header>
 
-<nav>
-  <a href="#">狭間書房について</a>
-  <a href="#">刊行物</a>
-  <a href="#">お問い合わせ</a>
-</nav>
+  <nav>
+    <a href="#">狭間書房について</a>
+    <a href="#">刊行物</a>
+    <a href="#">お問い合わせ</a>
+  </nav>
+
+  <div class="content">
 
 <!-- カルーセル -->
 <div class="carousel">
@@ -191,11 +244,11 @@
     <p>© 2025 狭間書房</p>
   </footer>
 
-<div id="searchResults"></div>
+  <div id="searchResults"></div>
 
-<script>
-  // 検索
-  const hiddenKeywords = [
+  <script>
+    // 検索
+    const hiddenKeywords = [
     {keyword: "社員名簿", url: "https://hazamashobo.github.io/meibo/"},
     {keyword: "テスト", url: "https://www.youtube.com/watch?v=W3oN4-NVvhc"}
   ];
@@ -225,6 +278,6 @@
     // 自動スライド（任意）
     setInterval(() => { showSlide(currentSlide + 1); }, 5000);
 
-</script>
+  </script>
 </body>
 </html>
