@@ -13,60 +13,59 @@
       padding: 0;
     }
 /* ヘッダー */
-header {
-  display: flex;
-  justify-content: space-between; /* 左と右に分ける */
-  align-items: center;
-  padding: 1em 2em;
-  background-color: #32a9cd;  /* 水色背景 */
-  color: #ffffffff;             /* 文字白 */
-  border-bottom: none;
-}
-.title-wrapper {
-  display: flex;
-  flex-direction: column;      /* h1 とサブタイトルを縦に並べる */
-}
-header h1 {
-  margin: 0;
-  font-size: 3em;
-  letter-spacing: 0.2em;
-  border: none;
-  padding: 0;
-}
-.subtitle {
-  margin: 0;                   /* 不要な余白を消す */
-  font-size: 1em;
-  color: #ffffffff;
-  padding-top: 0px;            /* h1との距離 */
-  margin-left: 14px            
-}
-.search {
-  display: flex;
-  align-items: center;
-}
-.search input {
-  padding: 4px;
-  border: 2px solid #003366;
-  border-radius: 4px;
-  width: 150px;
-  background-color: #ffffff;
-  color: #003366;
-}
-.search input::placeholder {
-  color: #003366aa;
-}
-.search button {
-  padding: 4px 6px;
-  margin-left: 4px;
-  border-radius: 4px;
-  border: none;
-  background-color: #003366;
-  color: #fff;
-  cursor: pointer;
-}
-.search button:hover {
-  background-color: #001f33;
-}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      background-color: #32a9cd;
+      color: #fff;
+    }
+    .title-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+      letter-spacing: 0.2em;
+      line-height: 1;
+      border: none;
+    }
+    .subtitle {
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+      font-size: 1em;
+      color: #fff;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+    }
+    .search input {
+      padding: 4px;
+      border: 2px solid #003366;
+      border-radius: 4px;
+      width: 150px;
+      background-color: #fff;
+      color: #003366;
+    }
+    .search input::placeholder {
+      color: #003366aa;
+    }
+    .search button {
+      padding: 4px 6px;
+      margin-left: 4px;
+      border-radius: 4px;
+      border: none;
+      background-color: #003366;
+      color: #fff;
+      cursor: pointer;
+    }
+    .search button:hover {
+      background-color: #001f33;
+    }
 /* ナビゲーション */
     nav {
       text-align: center;
