@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>狭間書房 | Hazama Publishing</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #32a9cd;
+      font-family: "ヒラギノ角ゴシック", serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+    }
+/* ヘッダー */
+header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      background-color: #32a9cd; /* 水色背景 */
+      color: #ffffffff; /* 文字青 */
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+      letter-spacing: 0.2em;
+    }
+/* 検索 */
+    .search {
+      display: flex;
+      align-items: center;
+    }
+    .search input {
+      padding: 4px;
+      border: 2px solid #003366;
+      border-radius: 4px;
+      width: 150px;
+      background-color: #ffffff;
+      color: #003366;
+    }
+    .search input::placeholder {
+      color: #003366aa;
+    }
+    .search button {
+      padding: 4px 6px;
+      margin-left: 4px;
+      border-radius: 4px;
+      border: none;
+      background-color: #003366;
+      color: #fff;
+      cursor: pointer;
+    }
+    .search button:hover {
+      background-color: #001f33;
+    }
+/* ナビゲーション */
+    nav {
+      text-align: center;
+      padding: 1em 0;
+      background-color: #f0f0f0;
+    }
+    nav a {
+      color: #003366;
+      margin: 0 1em;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #32a9cd;
+    }
+/* コンテンツ */
+    .content {
+      max-width: 1000px;
+      margin: 2em auto;
+      padding: 0 1em;
+    }
+/* カルーセル */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 1000px;
+      margin: 2em auto;
+      border-radius: 8px;
+    }
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel img {
+      width: 100%;
+      flex-shrink: 0;
+    }
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .carousel-buttons button {
+      background-color: rgba(0,0,0,0.5);
+      border: none;
+      color: #fff;
+      padding: 0.5em 1em;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+/* PICK項目 */
+    .pick {
+      margin: 2em 0;
+    }
+    .pick h2 {
+      color: #003366;
+    }
+    .pick-items {
+      display: flex;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+    .pick-item img {
+      width: 200px;
+      border-radius: 4px;
+    }
+/* 最新刊 & トピックス */
+    .latest {
+      margin: 2em 0;
+    }
+    .latest h2, .topics h2 {
+      color: #003366;
+    }
+    .topics {
+      margin-top: 1em;
+    }
+/* フッター */
+    footer {
+      background-color: #32a9cd;
+      color: #ffffffff;
+      text-align: center;
+      padding: 1em;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>狭間書房</h1>
+    <div class="search">
+      <input type="text" id="searchInput" placeholder="キーワード入力">
+      <button onclick="searchSite()">検索</button>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#">狭間書房について</a>
+    <a href="#">刊行物</a>
+    <a href="#">お問い合わせ</a>
+  </nav>
+
+  <div class="content">
+
+<!-- カルーセル -->
+<div class="carousel">
+      <div class="carousel-images" id="carouselImages">
+        <img src="image1.jpg" alt="画像1">
+        <img src="image2.jpg" alt="画像2">
+        <img src="image3.jpg" alt="画像3">
+        <img src="image4.jpg" alt="画像4">
+      </div>
+      <div class="carousel-buttons">
+        <button onclick="prevSlide()">‹</button>
+        <button onclick="nextSlide()">›</button>
+      </div>
+    </div>
+
+<!-- PICK UP! -->
+<div class="pick">
+      <h2>PICK UP!</h2>
+      <div class="pick-items">
+        <div class="pick-item"><img src="gazou/clear_silver.jpg" alt="Pick1"></div>
+        <div class="pick-item"><img src="pick2.jpg" alt="Pick2"></div>
+        <div class="pick-item"><img src="pick3.jpg" alt="Pick3"></div>
+      </div>
+    </div>
+
+<!-- 最新刊 -->
+<div class="latest">
+      <h2>最新刊</h2>
+      <p>ここに最新刊の説明や表紙を入れます。</p>
+
+<!-- トピックス -->
+<div class="topics">
+        <h2>トピックス</h2>
+        <p>ここに最新情報やイベント情報を掲載します。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2025 狭間書房</p>
+  </footer>
+
+  <div id="searchResults"></div>
+
+  <script>
+    // ARG隠しキーワード
+    const hiddenKeywords = [
+      {keyword: "社員名簿", url: "https://acrobat.adobe.com/id/urn:aaid:sc:AP:05634423-e922-4df4-9d3d-c1eaecb39c3a", message: "発見！"},
+      {keyword: "間野", url: "hidden/mano.html", message: "間野に関するページが見つかりました！"}
+    ];
+
+    function searchSite() {
+      const input = document.getElementById('searchInput').value.trim();
+      const resultsDiv = document.getElementById('searchResults');
+      resultsDiv.innerHTML = "";
+
+      if (!input) {
+        resultsDiv.innerHTML = "<p>キーワードを入力してください</p>";
+        return;
+      }
+
+      const found = hiddenKeywords.find(item => item.keyword === input);
+
+      if (found) {
+        resultsDiv.innerHTML = `<p>${found.message}</p><p><a href="${found.url}" style="color:#32a9cd;">こちらへ進む</a></p>`;
+      } else {
+        resultsDiv.innerHTML = "<p>該当するページはありません。</p>";
+      }
+    }
+
+    // カルーセル
+    let currentSlide = 0;
+    const slides = document.getElementById('carouselImages').children;
+
+    function showSlide(index) {
+      const total = slides.length;
+      if (index < 0) currentSlide = total - 1;
+      else if (index >= total) currentSlide = 0;
+      else currentSlide = index;
+      const offset = -currentSlide * 100;
+      document.getElementById('carouselImages').style.transform = `translateX(${offset}%)`;
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    // 自動スライド（任意）
+    setInterval(() => { showSlide(currentSlide + 1); }, 5000);
+
+  </script>
+</body>
+</html>
