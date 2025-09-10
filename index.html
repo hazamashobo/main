@@ -64,12 +64,14 @@
   }
 
   /* カルーセル */
-  .carousel-container {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin: 2em 0;
-  }
+ .carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 2em 0;
+  display: flex;
+  align-items: center; 
+}
   #carouselImages {
     display: flex;
     transition: transform 0.5s ease;
@@ -80,13 +82,20 @@
     flex-shrink: 0;
     border-radius: 10px;
   }
-  .prev, .next {
+.prev, .next {
+  position: relative; 
+  background: #32a9cd;
+  border: none;
+  color: #fff;
   width: 40px;
   height: 40px;
-  padding: 0;
-  border-radius: 50%; 
+  border-radius: 50%;
+  font-size: 24px;
   line-height: 40px;
   text-align: center;
+  cursor: pointer;
+  margin: 0 10px; 
+  flex-shrink: 0;
 }
   .prev { left: 0; }
   .next { right: 0; }
@@ -104,7 +113,7 @@
 <body>
 <header>
   <div class="title-wrapper">
-    <h1>狭間書房7</h1>
+    <h1>狭間書房8</h1>
     <p class="subtitle">- Hazama Publishing -</p>
   </div>
   <div class="search">
@@ -162,6 +171,12 @@ function showSlide(index) {
   const slideWidth = slides[0].offsetWidth;
   const gap = 20;
   const containerWidth = container.parentElement.offsetWidth;
+  currentSlide = index;
+
+  // 右端まで来た場合のループ
+  if (currentSlide >= total) {
+    currentSlide = 0;
+  }
   const offset = -currentSlide*(slideWidth+gap) + (containerWidth - slideWidth)/2;
   container.style.transform = `translateX(${offset}px)`;
 }
