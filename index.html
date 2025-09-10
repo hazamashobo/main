@@ -14,46 +14,59 @@
     }
 /* ヘッダー */
 header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1em 2em;
-      background-color: #32a9cd; /* 水色背景 */
-      color: #ffffffff; /* 文字青 */
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-      letter-spacing: 0.2em;
-    }
-/* 検索 */
-    .search {
-      display: flex;
-      align-items: center;
-    }
-    .search input {
-      padding: 4px;
-      border: 2px solid #003366;
-      border-radius: 4px;
-      width: 150px;
-      background-color: #ffffff;
-      color: #003366;
-    }
-    .search input::placeholder {
-      color: #003366aa;
-    }
-    .search button {
-      padding: 4px 6px;
-      margin-left: 4px;
-      border-radius: 4px;
-      border: none;
-      background-color: #003366;
-      color: #fff;
-      cursor: pointer;
-    }
-    .search button:hover {
-      background-color: #001f33;
-    }
+  display: flex;
+  justify-content: space-between; /* 左と右に分ける */
+  align-items: center;
+  padding: 1em 2em;
+  background-color: #32a9cd;  /* 水色背景 */
+  color: #ffffffff;             /* 文字白 */
+  border-bottom: none;
+}
+.title-wrapper {
+  display: flex;
+  flex-direction: column;      /* h1 とサブタイトルを縦に並べる */
+}
+header h1 {
+  margin: 0;
+  font-size: 3em;
+  letter-spacing: 0.2em;
+  border: none;
+  padding: 0;
+}
+.subtitle {
+  margin: 0;                   /* 不要な余白を消す */
+  font-size: 1em;
+  color: #ffffffff;
+  padding-top: 0px;            /* h1との距離 */
+  margin-left: 14px            
+}
+.search {
+  display: flex;
+  align-items: center;
+}
+.search input {
+  padding: 4px;
+  border: 2px solid #003366;
+  border-radius: 4px;
+  width: 150px;
+  background-color: #ffffff;
+  color: #003366;
+}
+.search input::placeholder {
+  color: #003366aa;
+}
+.search button {
+  padding: 4px 6px;
+  margin-left: 4px;
+  border-radius: 4px;
+  border: none;
+  background-color: #003366;
+  color: #fff;
+  cursor: pointer;
+}
+.search button:hover {
+  background-color: #001f33;
+}
 /* ナビゲーション */
     nav {
       text-align: center;
@@ -107,7 +120,7 @@ header {
       cursor: pointer;
       border-radius: 4px;
     }
-/* PICK項目 */
+/* PICK UP項目 */
     .pick {
       margin: 2em 0;
     }
@@ -142,15 +155,16 @@ header {
     }
 
   </style>
-</head>
-<body>
-  <header>
+<header>
+  <div class="title-wrapper">
     <h1>狭間書房</h1>
-    <div class="search">
-      <input type="text" id="searchInput" placeholder="キーワード入力">
-      <button onclick="searchSite()">検索</button>
-    </div>
-  </header>
+    <p class="subtitle">- Hazama Publishing -</p> <!-- 追加した文字 -->
+  </div>
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="キーワード入力">
+    <button onclick="searchSite()">検索</button>
+  </div>
+</header>
 
   <nav>
     <a href="#">狭間書房について</a>
@@ -205,9 +219,9 @@ header {
   <div id="searchResults"></div>
 
   <script>
-    // ARG隠しキーワード
+    // キーワード
     const hiddenKeywords = [
-      {keyword: "社員名簿", url: "https://acrobat.adobe.com/id/urn:aaid:sc:AP:05634423-e922-4df4-9d3d-c1eaecb39c3a"},
+      {keyword: "社員名簿", url: "https://acrobat.adobe.com/id/urn:aaid:sc:AP:05634423-e922-4df4-9d3d-c1eaecb39c3a", message: "発見！"},
       {keyword: "間野", url: "hidden/mano.html", message: "間野に関するページが見つかりました！"}
     ];
 
