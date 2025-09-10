@@ -156,7 +156,7 @@
   </style>
 <header>
   <div class="title-wrapper">
-    <h1>狭間書房</h1>
+    <h1>狭間書房2</h1>
     <p class="subtitle">- Hazama Publishing -</p> <!-- 追加した文字 -->
   </div>
   <div class="search">
@@ -218,31 +218,37 @@
   <div id="searchResults"></div>
 
   <script>
-    // キーワード
-    const hiddenKeywords = [
-      {keyword: "社員名簿", url: "https://acrobat.adobe.com/id/urn:aaid:sc:AP:05634423-e922-4df4-9d3d-c1eaecb39c3a", message: "発見！"},
-      {keyword: "間野", url: "hidden/mano.html", message: "間野に関するページが見つかりました！"}
-    ];
+  // キーワードと遷移先URL
+  const hiddenKeywords = [
+    {keyword: "社員名簿", url: "https://hazamashobo.github.io/meibo/"},
+    {keyword: "テスト", url: "https://www.youtube.com/watch?v=W3oN4-NVvhc&list=RDePUWAOGN23o&index=14"}
+  ];
 
-    function searchSite() {
-      const input = document.getElementById('searchInput').value.trim();
-      const resultsDiv = document.getElementById('searchResults');
-      resultsDiv.innerHTML = "";
+  function searchSite() {
+    const input = document.getElementById('searchInput').value.trim();
 
-      if (!input) {
-        resultsDiv.innerHTML = "<p>キーワードを入力してください</p>";
-        return;
-      }
-
-      const found = hiddenKeywords.find(item => item.keyword === input);
-
-      if (found) {
-        resultsDiv.innerHTML = `<p>${found.message}</p><p><a href="${found.url}" style="color:#32a9cd;">こちらへ進む</a></p>`;
-      } else {
-        resultsDiv.innerHTML = "<p>該当するページはありません。</p>";
-      }
+    if (!input) {
+      alert("キーワードを入力してください");
+      return;
     }
 
+    const found = hiddenKeywords.find(item => item.keyword === input);
+
+    if (found) {
+      // 該当キーワードがあれば直接ページ遷移
+      window.location.href = found.url;
+    } else {
+      alert("該当するページはありません");
+    }
+  }
+
+  // Enterキーで検索
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      searchSite();
+    }
+  });
     // カルーセル
     let currentSlide = 0;
     const slides = document.getElementById('carouselImages').children;
