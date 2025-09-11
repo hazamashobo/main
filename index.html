@@ -12,7 +12,8 @@
       margin: 0;
       padding: 0;
     }
-/* ヘッダー */
+
+    /* ヘッダー */
     header {
       display: flex;
       justify-content: space-between;
@@ -33,13 +34,15 @@
       border: none;
     }
     .subtitle {
-      margin: 9;
+      margin: 0;
       padding: 0;
       line-height: 1;
       font-size: 1em;
-      margin-left: 100px
+      margin-left: 100px;
       color: #fff;
     }
+
+    /* 検索 */
     .search {
       display: flex;
       align-items: center;
@@ -67,35 +70,8 @@
     .search button:hover {
       background-color: #001f33;
     }
-/* 検索 */
-    .search {
-      display: flex;
-      align-items: center;
-    }
-    .search input {
-      padding: 4px;
-      border: 2px solid #003366;
-      border-radius: 4px;
-      width: 150px;
-      background-color: #ffffff;
-      color: #003366;
-    }
-    .search input::placeholder {
-      color: #003366aa;
-    }
-    .search button {
-      padding: 4px 6px;
-      margin-left: 4px;
-      border-radius: 4px;
-      border: none;
-      background-color: #003366;
-      color: #fff;
-      cursor: pointer;
-    }
-    .search button:hover {
-      background-color: #001f33;
-    }
-/* ナビゲーション */
+
+    /* ナビゲーション */
     nav {
       text-align: center;
       padding: 1em 0;
@@ -110,27 +86,35 @@
     nav a:hover {
       color: #32a9cd;
     }
-/* コンテンツ */
+
+    /* コンテンツ */
     .content {
       max-width: 1000px;
       margin: 2em auto;
       padding: 0 1em;
     }
-/* カルーセル */
+
+    /* カルーセル */
     .carousel {
       position: relative;
       overflow: hidden;
-      max-width: 500px;
+      max-width: 600px;
       margin: 2em auto;
       border-radius: 8px;
+    }
+    .carousel-container {
+      width: 100%;
+      overflow: hidden;
     }
     .carousel-images {
       display: flex;
       transition: transform 0.5s ease-in-out;
     }
     .carousel img {
-      width: 100%;
+      width: calc(100% / 3);
       flex-shrink: 0;
+      border-radius: 4px;
+      margin: 0 5px;
     }
     .carousel-buttons {
       position: absolute;
@@ -139,6 +123,7 @@
       display: flex;
       justify-content: space-between;
       transform: translateY(-50%);
+      pointer-events: none;
     }
     .carousel-buttons button {
       background-color: rgba(0,0,0,0.5);
@@ -147,8 +132,13 @@
       padding: 0.5em 1em;
       cursor: pointer;
       border-radius: 4px;
+      pointer-events: auto;
     }
-/* PICK項目 */
+    .carousel-buttons button:hover {
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    /* PICK UP */
     .pick {
       margin: 2em 0;
     }
@@ -158,13 +148,35 @@
     .pick-items {
       display: flex;
       gap: 1em;
-      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .pick-item {
+      flex-shrink: 0;
     }
     .pick-item img {
       width: 200px;
       border-radius: 4px;
     }
-/* 最新刊 & トピックス */
+    .pick-details {
+      flex-grow: 1;
+      border: 2px solid #32a9cd;
+      border-radius: 8px;
+      padding: 1.5em;
+      background-color: #f8fbfc;
+      min-height: 250px;
+    }
+    .pick-details h3 {
+      color: #003366;
+      margin-top: 0;
+      border-bottom: 2px solid #32a9cd;
+      padding-bottom: 0.5em;
+    }
+    .pick-details p {
+      color: #003366;
+      line-height: 1.6;
+    }
+
+    /* 最新刊 & トピックス */
     .topick {
       margin: 2em 0;
     }
@@ -180,20 +192,20 @@
       width: 200px;
       border-radius: 4px;
     }
-    }
-/* フッター */
+
+    /* フッター */
     footer {
       background-color: #32a9cd;
-      color: #ffffffff;
+      color: #ffffff;
       text-align: center;
       padding: 1em;
+      margin-top: 3em;
     }
-
   </style>
 </head>
 <body>
   <header>
-    <h1>狭間書房11</h1>
+    <h1>狭間書房12</h1>
     <div class="search">
       <input type="text" id="searchInput" placeholder="キーワード入力">
       <button onclick="searchSite()">検索</button>
@@ -207,14 +219,17 @@
   </nav>
 
   <div class="content">
-
-<!-- カルーセル -->
-<div class="carousel">
-      <div class="carousel-images" id="carouselImages">
-        <img src="gazou/bana1.png" alt="画像1">
-        <img src="gazou/bana2.png" alt="画像2">
-        <img src="gazou/bana3.png" alt="画像3">
-        <img src="gazou/bana4.png" alt="画像4">
+    <!-- カルーセル -->
+    <div class="carousel">
+      <div class="carousel-container">
+        <div class="carousel-images" id="carouselImages">
+          <img src="gazou/bana1.png" alt="画像1">
+          <img src="gazou/bana2.png" alt="画像2">
+          <img src="gazou/bana3.png" alt="画像3">
+          <img src="gazou/bana4.png" alt="画像4">
+          <img src="gazou/bana1.png" alt="画像1">
+          <img src="gazou/bana2.png" alt="画像2">
+        </div>
       </div>
       <div class="carousel-buttons">
         <button onclick="prevSlide()">‹</button>
@@ -222,31 +237,39 @@
       </div>
     </div>
 
-<!-- PICK UP! -->
-<div class="pick">
+    <!-- PICK UP! -->
+    <div class="pick">
       <h2>PICK UP!</h2>
       <div class="pick-items">
-        <div class="pick-item"><img src="gazou/hyoushi1.png" alt="Pick1"></div>
+        <div class="pick-item">
+          <img src="gazou/hyoushi3.png" alt="Pick1">
+        </div>
+        <div class="pick-details">
+          <h3>注目の一冊</h3>
+          <p>この本は狭間書房が自信を持ってお届けする話題作です。独特の世界観と緻密な描写で読者を魅了する物語をお楽しみください。</p>
+          <p>著者の繊細な筆致が織りなす幻想的な物語は、現実と虚構の境界を曖昧にし、読者に新たな発見をもたらします。</p>
+          <p>発売日: 2025年1月<br>
+          価格: ¥1,800（税込）<br>
+          ページ数: 256ページ</p>
+        </div>
       </div>
     </div>
 
-<!-- 最新刊 -->
-<div class="topick">
+    <!-- 最新刊 -->
+    <div class="topick">
       <h2>最新刊情報</h2>
       <div class="topick-items">
         <div class="topick-item"><img src="gazou/hyoushi1.png" alt="topick1"></div>
         <div class="topick-item"><img src="gazou/hyoushi2.png" alt="topick2"></div>
-        <div class="topick-item"><img src="gazou/hyoushi3.png" alt="topick3"></div>
+        <div class="topick-item"><img src="gazou/hyoushi4.png" alt="topick3"></div>
       </div>
     </div>
 
-<!-- トピックス -->
-<div class="topick">
-        <h2>トピックス</h2>
-        <p>ここに最新情報やイベント情報を掲載します。</p>
-      </div>
+    <!-- トピックス -->
+    <div class="topick">
+      <h2>トピックス</h2>
+      <p>ここに最新情報やイベント情報を掲載します。</p>
     </div>
-
   </div>
 
   <footer>
@@ -256,37 +279,65 @@
   <div id="searchResults"></div>
 
   <script>
-    // 検索
+    // 検索機能
     const hiddenKeywords = [
-    {keyword: "社員名簿", url: "https://hazamashobo.github.io/meibo/"},
-    {keyword: "テスト", url: "https://www.youtube.com/watch?v=W3oN4-NVvhc"}
-  ];
-  function searchSite() {
-    const input = document.getElementById('searchInput').value.trim();
-    if(!input) return;
-    const found = hiddenKeywords.find(k=>k.keyword===input);
-    if(found) location.href = found.url;
-  }
+      {keyword: "社員名簿", url: "https://hazamashobo.github.io/meibo/"},
+      {keyword: "テスト", url: "https://www.youtube.com/watch?v=W3oN4-NVvhc"}
+    ];
+
+    function searchSite() {
+      const input = document.getElementById('searchInput').value.trim();
+      if(!input) return;
+      const found = hiddenKeywords.find(k=>k.keyword===input);
+      if(found) location.href = found.url;
+    }
 
     // カルーセル
     let currentSlide = 0;
-    const slides = document.getElementById('carouselImages').children;
+    const totalSlides = 4; // 実際の画像数
 
-    function showSlide(index) {
-      const total = slides.length;
-      if (index < 0) currentSlide = total - 1;
-      else if (index >= total) currentSlide = 0;
-      else currentSlide = index;
-      const offset = -currentSlide * 100;
-      document.getElementById('carouselImages').style.transform = `translateX(${offset}%)`;
+    function showSlide(index, instant = false) {
+      const carouselImages = document.getElementById('carouselImages');
+      
+      if (instant) {
+        carouselImages.style.transition = 'none';
+      } else {
+        carouselImages.style.transition = 'transform 0.5s ease-in-out';
+      }
+      
+      currentSlide = index;
+      const offset = -currentSlide * (100/3); // 3つ表示するので100/3
+      carouselImages.style.transform = `translateX(${offset}%)`;
+      
+      // 無限ループのための処理
+      setTimeout(() => {
+        if (currentSlide >= totalSlides) {
+          currentSlide = 0;
+          carouselImages.style.transition = 'none';
+          carouselImages.style.transform = `translateX(0%)`;
+        } else if (currentSlide < 0) {
+          currentSlide = totalSlides - 1;
+          carouselImages.style.transition = 'none';
+          carouselImages.style.transform = `translateX(${-currentSlide * (100/3)}%)`;
+        }
+      }, instant ? 0 : 500);
     }
 
-    function nextSlide() { showSlide(currentSlide + 1); }
-    function prevSlide() { showSlide(currentSlide - 1); }
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
 
-    // 自動スライド（任意）
-    setInterval(() => { showSlide(currentSlide + 1); }, 5000);
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
 
+    // 初期表示
+    showSlide(0, true);
+
+    // 自動スライド
+    setInterval(() => {
+      nextSlide();
+    }, 5000);
   </script>
 </body>
 </html>
