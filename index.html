@@ -165,14 +165,21 @@
       border-radius: 4px;
     }
 /* 最新刊 & トピックス */
-    .latest {
+    .topick {
       margin: 2em 0;
     }
-    .latest h2, .topics h2 {
+    .topick h2 {
       color: #003366;
     }
-    .topics {
-      margin-top: 1em;
+    .topick-items {
+      display: flex;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+    .topick-item img {
+      width: 200px;
+      border-radius: 4px;
+    }
     }
 /* フッター */
     footer {
@@ -219,16 +226,19 @@
 <div class="pick">
       <h2>PICK UP!</h2>
       <div class="pick-items">
-        <div class="pick-item"><img src="gazou/clear_silver.jpg" alt="Pick1"></div>
-        <div class="pick-item"><img src="pick2.jpg" alt="Pick2"></div>
-        <div class="pick-item"><img src="pick3.jpg" alt="Pick3"></div>
+        <div class="pick-item"><img src="gazou/hyoushi1.png" alt="Pick1"></div>
       </div>
     </div>
 
 <!-- 最新刊 -->
-<div class="latest">
-      <h2>最新刊</h2>
-      <p>ここに最新刊の説明や表紙を入れます。</p>
+<div class="topick">
+      <h2>最新刊情報</h2>
+      <div class="topick-items">
+        <div class="topick-item"><img src="gazou/hyoushi1.png" alt="topick1"></div>
+        <div class="topick-item"><img src="gazou/hyoushi2.png" alt="topick2"></div>
+        <div class="topick-item"><img src="gazou/hyoushi3.png" alt="topick3"></div>
+      </div>
+    </div>
 
 <!-- トピックス -->
 <div class="topics">
