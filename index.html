@@ -213,9 +213,11 @@
     <p class="subtitle">Hazama Publishing</p>
   </div>
   <div class="search">
-    <input type="text" id="searchInput" placeholder="キーワード入力">
-    <button onclick="searchSite()">検索</button>
-  </div>
+      <form action="results.html" method="get">
+        <input type="text" id="searchInput" name="q" placeholder="キーワード入力">
+        <button type="submit">検索</button>
+      </form>
+    </div>
 </header>
 
   <nav>
@@ -290,19 +292,6 @@
   <div id="searchResults"></div>
 
   <script>
-    // 検索機能
-    const hiddenKeywords = [
-      {keyword: "社員名簿", url: "https://hazamashobo.github.io/meibo/"},
-      {keyword: "テスト", url: "https://www.youtube.com/watch?v=W3oN4-NVvhc"}
-    ];
-
-    function searchSite() {
-      const input = document.getElementById('searchInput').value.trim();
-      if(!input) return;
-      const found = hiddenKeywords.find(k=>k.keyword===input);
-      if(found) location.href = found.url;
-    }
-
     // カルーセル
     let currentSlide = 0;
     const totalSlides = 4; // 実際の画像数
