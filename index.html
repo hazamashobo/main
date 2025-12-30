@@ -468,7 +468,7 @@
         </div>
         <div class="pick-details">
           <h3>『LIMINAL SPACE 100』</h3>
-          <p>美術評論家の内田玲央が監修を務める、近年注目が集まる不気味な無人空間「Liminal space」を全国から集めた世界初の調査書集！あなたもきっと「狭間」の虜になる。<br>※乱丁・落丁があった場合は、「お問い合わせ」ページからご連絡ください。
+          <p>美術評論家の内田猛央が監修を務める、近年注目が集まる不気味な無人空間「Liminal space」を全国から集めた世界初の調査書集！あなたもきっと「狭間」の虜になる。<br>(乱丁・落丁があった場合は、「お問い合わせ」ページからご連絡ください。)
           </p>
           <p>発売日: 2025年8月　価格: ¥1,800（税込）<br>
         </div>
@@ -508,6 +508,7 @@
     // カルーセル
     let currentSlide = 0;
     const totalSlides = 4;
+    let imagesPerView = 3;
 
     function showSlide(index, instant = false) {
       const carouselImages = document.getElementById('carouselImages');
@@ -519,7 +520,7 @@
       }
       
       currentSlide = index;
-      const offset = -currentSlide * (100/3);
+      const offset = -currentSlide * (100 / imagesPerView);
       carouselImages.style.transform = `translateX(${offset}%)`;
       
       setTimeout(() => {
@@ -530,7 +531,7 @@
         } else if (currentSlide < 0) {
           currentSlide = totalSlides - 1;
           carouselImages.style.transition = 'none';
-          carouselImages.style.transform = `translateX(${-currentSlide * (100/3)}%)`;
+          carouselImages.style.transform = `translateX(${-currentSlide * (100 / imagesPerView)}%)`;
         }
       }, instant ? 0 : 500);
     }
@@ -543,7 +544,23 @@
       showSlide(currentSlide - 1);
     }
 
+    function updateCarouselForScreen() {
+      const carousel = document.querySelector('.carousel');
+      const carouselImages = document.getElementById('carouselImages');
+      
+      if (window.innerWidth <= 768) {
+        imagesPerView = 1;
+        carouselImages.style.transform = `translateX(${-currentSlide * 100}%)`;
+      } else {
+        imagesPerView = 3;
+        carouselImages.style.transform = `translateX(${-currentSlide * (100/3)}%)`;
+      }
+    }
+
     showSlide(0, true);
+    updateCarouselForScreen();
+
+    window.addEventListener('resize', updateCarouselForScreen);
 
     setInterval(() => {
       nextSlide();
