@@ -2,18 +2,27 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>狭間書房 | Hazama Publishing</title>
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       background-color: #ffffff;
       color: #32a9cd;
-      font-family: "ヒラギノ角ゴシック", serif;
+      font-family: "ヒラギノ角ゴシック", sans-serif;
       line-height: 1.8;
-      margin: 0;
-      padding: 0;
+      display: flex;
+      flex-direction: column;
     }
 
-   /* ヘッダー */
+    /* ヘッダー */
     header {
       display: flex;
       justify-content: space-between;
@@ -21,12 +30,16 @@
       padding: 1em 2em;
       background-color: #32a9cd;
       color: #fff;
+      flex-shrink: 0;
+      gap: 2em;
+      box-sizing: border-box;
+      width: 100%;
     }
     .title-wrapper {
       display: flex;
       flex-direction: column;
     }
-     .title-wrapper a {
+    .title-wrapper a {
       text-decoration: none;
       color: #fff;
       display: flex;
@@ -42,7 +55,7 @@
       font-size: 3em;
       letter-spacing: 0.1em;
       line-height: 1;
-       border: none;
+      border: none;
       font-family: 'Tsunagi Gothic Black', sans-serif;
       font-weight: 700;
     }
@@ -54,11 +67,19 @@
       text-align: center;
       color: #fff;
     }
-    
+
     /* 検索 */
     .search {
       display: flex;
       align-items: center;
+      gap: 0.5em;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    .search form {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
     }
     .search input {
       padding: 4px;
@@ -73,12 +94,13 @@
     }
     .search button {
       padding: 4px 6px;
-      margin-left: 4px;
       border-radius: 4px;
       border: none;
       background-color: #003366;
       color: #fff;
       cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .search button:hover {
       background-color: #001f33;
@@ -89,15 +111,25 @@
       text-align: center;
       padding: 1em 0;
       background-color: #f0f0f0;
+      flex-shrink: 0;
+      overflow-x: auto;
+      box-sizing: border-box;
+      width: 100%;
     }
     nav a {
       color: #003366;
       margin: 0 1em;
       text-decoration: none;
       font-weight: bold;
+      display: inline-block;
+      white-space: nowrap;
     }
     nav a:hover {
       color: #32a9cd;
+    }
+    nav a.active {
+      color: #32a9cd;
+      border-bottom: 2px solid #32a9cd;
     }
 
     /* コンテンツ */
@@ -105,6 +137,9 @@
       max-width: 1000px;
       margin: 2em auto;
       padding: 0 1em;
+      flex: 1;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     /* カルーセル */
@@ -114,6 +149,8 @@
       max-width: 1200px;
       margin: 2em auto;
       border-radius: 8px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .carousel-container {
       width: 100%;
@@ -128,6 +165,7 @@
       flex-shrink: 0;
       border-radius: 4px;
       margin: 0 5px;
+      box-sizing: border-box;
     }
     .carousel-buttons {
       position: absolute;
@@ -137,6 +175,8 @@
       justify-content: space-between;
       transform: translateY(-50%);
       pointer-events: none;
+      padding: 0 1em;
+      box-sizing: border-box;
     }
     .carousel-buttons button {
       background-color: rgba(0,0,0,0.5);
@@ -190,14 +230,13 @@
       line-height: 1.6;
     }
 
-    /* 最新刊 & トピックス */
+    /* 新刊情報 & トピックス */
     .topick {
       margin: 2em 0;
     }
     .topick h2 {
       color: #003366;
-      line-height: 1.2; 
-      
+      line-height: 1.2;
     }
     .topick-items {
       display: flex;
@@ -215,42 +254,203 @@
       color: #ffffff;
       text-align: center;
       padding: 1em;
-      margin-top: 3em;
+      flex-shrink: 0;
+      margin-top: auto;
+      box-sizing: border-box;
+      width: 100%;
     }
-       /* レスポンシブ */
+
+    /* レスポンシブ */
     @media (max-width: 768px) {
-      .content {
-        padding: 0 1em;
-      }
-      .section {
+      header {
         padding: 1em;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+        gap: 1em;
       }
+
       header h1 {
         font-size: 2em;
       }
+
+      .title-wrapper {
+        width: 100%;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .search form {
+        width: 100%;
+        display: flex;
+      }
+
+      .search input {
+        width: 100%;
+        flex: 1;
+      }
+
+      nav a {
+        margin: 0 0.5em;
+        font-size: 0.9em;
+      }
+
+      .content {
+        padding: 0 1em;
+        margin: 1em auto;
+      }
+
+      .carousel {
+        margin: 1em auto;
+      }
+
+      .carousel img {
+        width: 100%;
+        margin: 0;
+      }
+
+      .pick-items {
+        flex-direction: column;
+      }
+
+      .pick-item img {
+        width: 100%;
+        max-width: 200px;
+      }
+
+      .topick-items {
+        justify-content: center;
+      }
+
+      .topick-item img {
+        width: 150px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+
+      header h1 {
+        font-size: 1.5em;
+      }
+
+      .subtitle {
+        font-size: 0.9em;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .search input {
+        width: 100%;
+        padding: 0.5em;
+      }
+
+      .search button {
+        padding: 0.5em 0.8em;
+        font-size: 0.9em;
+      }
+
+      nav a {
+        margin: 0 0.3em;
+        font-size: 0.8em;
+      }
+
+      .content {
+        padding: 0 0.8em;
+        margin: 0.8em auto;
+      }
+
+      .carousel-buttons button {
+        padding: 0.4em 0.8em;
+        font-size: 0.9em;
+      }
+
+      .carousel img {
+        margin: 0 2px;
+      }
+
+      .pick {
+        margin: 1.5em 0;
+      }
+
+      .pick h2 {
+        font-size: 1.3em;
+      }
+
+      .pick-items {
+        gap: 0.5em;
+      }
+
+      .pick-item img {
+        width: 100%;
+        max-width: 150px;
+      }
+
+      .pick-details {
+        padding: 1em;
+        min-height: auto;
+      }
+
+      .pick-details h3 {
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+      }
+
+      .pick-details p {
+        font-size: 0.9em;
+        line-height: 1.5;
+      }
+
+      .topick {
+        margin: 1.5em 0;
+      }
+
+      .topick h2 {
+        font-size: 1.3em;
+      }
+
+      .topick-items {
+        gap: 0.5em;
+      }
+
+      .topick-item img {
+        width: 120px;
+      }
+
+      .topick p {
+        font-size: 0.95em;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-  <div class="title-wrapper">
-  <a href="https://hazamashobo.github.io/main/index.html">
-    <h1>狭間書房</h1>
-    <p class="subtitle">Hazama Publishing</p>
-  </a>
-</div>
-  <div class="search">
+    <div class="title-wrapper">
+      <a href="https://hazamashobo.github.io/main/index.html">
+        <h1>狭間書房</h1>
+        <p class="subtitle">Hazama Publishing</p>
+      </a>
+    </div>
+    <div class="search">
       <form action="https://hazamashobo.github.io/result/" method="get">
         <input type="text" id="searchInput" name="q" placeholder="キーワード入力">
         <button type="submit">検索</button>
       </form>
     </div>
-</header>
+  </header>
 
   <nav>
-    <a href="https://hazamashobo.github.io/main/index.html">ホーム</a>
+    <a href="https://hazamashobo.github.io/main/index.html" class="active">ホーム</a>
     <a href="https://hazamashobo.github.io/company/index.html">狭間書房について</a>
     <a href="https://hazamashobo.github.io/books/index.html">刊行物</a>
-    <a href="https://hazamashobo.github.io/contact/index.html"class="active">お問い合わせ</a>
+    <a href="https://hazamashobo.github.io/contact/index.html">お問い合わせ</a>
   </nav>
 
   <div class="content">
@@ -280,8 +480,8 @@
           <img src="gazou/hyoushi3.png" alt="Pick1">
         </div>
         <div class="pick-details">
-          <h3>『LIMINAL SPACE 100』 </h3>
-          <p>美術評論家の内田玲央が監修を務める、近年注目が集まる不気味な無人空間「Liminal space」を全国から集めた世界初の調査書集！あなたもきっと「狭間」の虜になる。<br>(乱丁・落丁があった場合は「お問い合わせ」ページからご連絡ください。)
+          <h3>『LIMINAL SPACE 100』</h3>
+          <p>美術評論家の内田猛央が監修を務める、近年注目が集まる不気味な無人空間「Liminal space」を全国から集めた世界初の調査書集！あなたもきっと「狭間」の虜になる。<br>(乱丁・落丁があった場合は、「お問い合わせ」ページからご連絡ください。)
           </p>
           <p>発売日: 2025年8月　価格: ¥1,800（税込）<br>
         </div>
@@ -294,9 +494,9 @@
       <div class="topick-items">
         <div class="topick-item"><img src="gazou/hyoushi1.png" alt="topick1"></div>
         <div class="topick-item"><img src="gazou/hyoushi2.png" alt="topick2"></div>
-        <div class="topick-item"><img src="gazou/hyoushi4.png" alt="topick2"></div>
-        <div class="topick-item"><img src="gazou/hyoushi8.png" alt="topick2"></div>
-        <div class="topick-item"><img src="gazou/soon.png" alt="topick2"></div>
+        <div class="topick-item"><img src="gazou/hyoushi4.png" alt="topick3"></div>
+        <div class="topick-item"><img src="gazou/hyoushi8.png" alt="topick4"></div>
+        <div class="topick-item"><img src="gazou/soon.png" alt="topick5"></div>
       </div>
     </div>
 
@@ -306,8 +506,8 @@
       <p>【イベント】写真集『ESCAPE FROM THE LIMINAL SPACE』刊行記念トークイベント開催決定！</p>
       <p>【イベント】「『RPGさんぽ』シリーズ特別ワークショップ」の抽選について</p>
       <p>【お知らせ】『RPGさんぽ入門』の著者らんたなさんからメッセージをいただきました！</p>
-      <p>【お知らせ】大原洋一『遅刻しないために』発売記念　プレゼントキャンペーン</p>
-      <p>【イベント】『彼方の奏太』上映試写会が行われました</p>
+      <p>【お知らせ】大原洋一『配嫌しないために』発売記念　プレゼントキャンペーン</p>
+      <p>【イベント】『彼方の妹太』上映試写会が行われました</p>
     </div>
   </div>
 
@@ -320,7 +520,7 @@
   <script>
     // カルーセル
     let currentSlide = 0;
-    const totalSlides = 4; // 実際の画像数
+    const totalSlides = 4;
 
     function showSlide(index, instant = false) {
       const carouselImages = document.getElementById('carouselImages');
@@ -332,10 +532,9 @@
       }
       
       currentSlide = index;
-      const offset = -currentSlide * (100/3); // 3つ表示するので100/3
+      const offset = -currentSlide * (100/3);
       carouselImages.style.transform = `translateX(${offset}%)`;
       
-      // 無限ループのための処理
       setTimeout(() => {
         if (currentSlide >= totalSlides) {
           currentSlide = 0;
@@ -357,10 +556,8 @@
       showSlide(currentSlide - 1);
     }
 
-    // 初期表示
     showSlide(0, true);
 
-    // 自動スライド
     setInterval(() => {
       nextSlide();
     }, 5000);
