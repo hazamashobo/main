@@ -236,13 +236,13 @@
   color: #ffffff;
 
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  text-align: center;
+  align-items: center;
 
   font-weight: bold;
   font-size: 0.85em;
-  line-height: 1.2;
+  line-height: 1.25;
 
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
@@ -251,28 +251,19 @@
   transform: rotate(8deg);
 }
 
-/* PDFだけ下線＋強調 */
+/* 行単位で中央揃え */
+.badge .line {
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* PDFだけ下線（浮かせない） */
 .badge .pdf-link {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
 }
-
-/* ホバー時（気づかせる） */
-.badge:hover {
-  transform: rotate(0deg) scale(1.05);
-}
-    .pick-details h3 {
-      color: #003366;
-      font-size: 1.5em;
-      margin-top: 0;
-      border-bottom: 2px solid #32a9cd;
-      padding-bottom: 0.5em;
-    }
-    .pick-details p {
-      color: #003366;
-      line-height: 1.6;
-    }
 
     /* 新刊情報 & トピックス */
     .topick {
@@ -429,8 +420,6 @@
   width: 90px;
   height: 90px;
   font-size: 0.75em;
-  top: -10px;
-  right: -10px;
 }
       .pick-details h3 {
         font-size: 1.2em;
@@ -514,9 +503,13 @@
           <img src="gazou/hyoushi3.png" alt="Pick1">
         </div>
        <div class="pick-details">
-  <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:d1b7d5cd-931f-46fb-8da3-9002a951a96a" class="badge" aria-label="PDF版を読む">
-    <span class="pdf-link">PDF</span>版<br>公開中！
-  </a>    <h3>『LIMINAL SPACE 100』</h3>
+<a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:73084728-d2af-412c-9e11-29dc237c7aae" class="badge" aria-label="PDF版データ公開中">
+  <span class="line">
+    <span class="pdf-link">PDF</span>版
+  </span>
+  <span class="line">データ公開中！</span>
+</a>  
+         <h3>『LIMINAL SPACE 100』</h3>
           <p>美術評論家の内田玲央が監修を務める、近年注目が集まる不気味な無人空間「Liminal Space」を全国から集めた世界初の調査書集！あなたもきっと「狭間」の虜になる。<br>(乱丁・落丁があった場合は、「お問い合わせ」ページからご連絡ください。)
           </p>
           <p>発売日: 2025年8月　価格: ¥1,800（税込）<br>
