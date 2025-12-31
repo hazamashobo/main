@@ -221,7 +221,25 @@
       padding: 1.5em;
       background-color: #f8fbfc;
       min-height: 100px;
+      position: relative;
     }
+
+/* バッジ */
+.badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background-color: #32a9cd;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.85em;
+  line-height: 1.2;
+  padding: 0.6em 0.8em;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transform: rotate(8deg);
+}
     .pick-details h3 {
       color: #003366;
       font-size: 1.5em;
@@ -384,7 +402,13 @@
         padding: 1em;
         min-height: auto;
       }
-
+      
+.badge {
+  font-size: 0.75em;
+  padding: 0.5em 0.6em;
+  top: -10px;
+  right: -10px;
+}
       .pick-details h3 {
         font-size: 1.2em;
         margin-bottom: 0.5em;
@@ -467,6 +491,7 @@
           <img src="gazou/hyoushi3.png" alt="Pick1">
         </div>
         <div class="pick-details">
+          <div class="badge">今なら<br>PDF版が読めます！</div>
           <h3>『LIMINAL SPACE 100』</h3>
           <p>美術評論家の内田玲央が監修を務める、近年注目が集まる不気味な無人空間「Liminal Space」を全国から集めた世界初の調査書集！あなたもきっと「狭間」の虜になる。<br>(乱丁・落丁があった場合は、「お問い合わせ」ページからご連絡ください。)
           </p>
