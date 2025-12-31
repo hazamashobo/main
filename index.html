@@ -224,21 +224,43 @@
       position: relative;
     }
 
-/* バッジ */
+/* 円形バッジ */
 .badge {
   position: absolute;
-  top: -12px;
-  right: -12px;
-  background-color: #32a9cd;
+  top: -14px;
+  right: -14px;
+
+  width: 110px;
+  height: 110px;
+  background-color: #ffa500;
   color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
   font-weight: bold;
   font-size: 0.85em;
   line-height: 1.2;
-  padding: 0.6em 0.8em;
+
   border-radius: 50%;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  text-decoration: none;
+
   transform: rotate(8deg);
+}
+
+/* PDFだけ下線＋強調 */
+.badge .pdf-link {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+/* ホバー時（気づかせる） */
+.badge:hover {
+  transform: rotate(0deg) scale(1.05);
 }
     .pick-details h3 {
       color: #003366;
@@ -404,8 +426,9 @@
       }
       
 .badge {
+  width: 90px;
+  height: 90px;
   font-size: 0.75em;
-  padding: 0.5em 0.6em;
   top: -10px;
   right: -10px;
 }
@@ -490,9 +513,11 @@
         <div class="pick-item">
           <img src="gazou/hyoushi3.png" alt="Pick1">
         </div>
-        <div class="pick-details">
-          <div class="badge">今なら<br>PDF版が読めます！</div>
-          <h3>『LIMINAL SPACE 100』</h3>
+       <div class="pick-details">
+  <a href="pdf/sample.pdf" class="badge" aria-label="PDF版を読む">
+    今なら<br>
+    <span class="pdf-link">PDF</span>版が<br>読めます！
+  </a>    <h3>『LIMINAL SPACE 100』</h3>
           <p>美術評論家の内田玲央が監修を務める、近年注目が集まる不気味な無人空間「Liminal Space」を全国から集めた世界初の調査書集！あなたもきっと「狭間」の虜になる。<br>(乱丁・落丁があった場合は、「お問い合わせ」ページからご連絡ください。)
           </p>
           <p>発売日: 2025年8月　価格: ¥1,800（税込）<br>
